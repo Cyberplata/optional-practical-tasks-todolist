@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Todolist} from './Todolist';
 
-export type FilterValuesType = "all" | "active" | "completed" | "firstThree" | "secondTwo";
+export type FilterValuesType = "all" | "active" | "completed" | "firstThree" | "lastTwo";
 
 //Hi guys!
 //1. Let's create a 'DELETE ALL TASKS' button, and place it above the filter buttons
@@ -47,50 +47,18 @@ function App() {
         setTasks([])
     }
 
-    let [filter, setFilter] = useState<FilterValuesType>("all");
-
-    let tasksForTodolist = tasks;
-
-    if (filter === "active") {
-        tasksForTodolist = tasks.filter(t => t.isDone === false);
-    }
-    if (filter === "completed") {
-        tasksForTodolist = tasks.filter(t => t.isDone === true);
-    }
-    if (filter === "firstThree") {
-        tasksForTodolist = tasks.slice(0, 3);
-    }
-    if (filter === "secondTwo") {
-        tasksForTodolist = tasks.slice(-2)
-    }
-
-    function changeFilter(value: FilterValuesType) {
-        setFilter(value);
-    }
-
-    // function firstThreeTasks(value: FilterValuesType) {
-    //     let filteredFirstThreeTasks = tasks;
-    //     // let filteredFirstThreeTasks = tasks.filter(t => t.id !== 1 || 2 || 3)
+    // let [filter, setFilter] = useState<FilterValuesType>("all");
     //
-    //     if (filter === 1) {
-    //         filteredFirstThreeTasks = tasks.filter(t => t.id === 1)
-    //     }
-    //     if (filter === 2) {
-    //         filteredFirstThreeTasks = tasks.filter(t => t.id === 2)
-    //     }
-    //     if (filter === 3) {
-    //         filteredFirstThreeTasks = tasks.filter(t => t.id === 3)
-    //     }
-    //
-    //     setTasks(value)
+    // function changeFilter(value: FilterValuesType) {
+    //     setFilter(value)
     // }
 
     return (
         <div className="App">
             <Todolist title="What to learn"
-                      tasks={tasksForTodolist}
+                      tasks={tasks}
                       removeTask={removeTask}
-                      changeFilter={changeFilter}
+                      // changeFilter={changeFilter}
                       removeAllTasks={removeAllTasks}
                       // firstThreeTasks={filteredFirstThreeTasks}
             />
