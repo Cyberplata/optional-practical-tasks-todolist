@@ -4,6 +4,10 @@
   display: flex;
 }
 
+.todolist {
+  background-color: #f6a8a8;
+}
+
 .App > div {
   margin-right: 50px;
 }
